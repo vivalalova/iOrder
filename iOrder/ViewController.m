@@ -35,19 +35,18 @@
     [super viewDidLoad];
     
     
-    
- 
-    
-    
-    
-    CLLocationCoordinate2D location;
-    
-    location.latitude = 25.044377;
-    location.longitude = 121.557495;
-    
-    [self addAnnoWithLocation:location];
-    
+    PFQuery* query = [[PFQuery alloc]initWithClassName:@"stores"];
+    query.limit = 1000;
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        for (PFObject* obj in objects) {
+            [self addAnnoWithLocation:obj];
+        }
+        
+    }];
 }
+
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -61,19 +60,19 @@
     [_locationManager startUpdatingLocation];
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-}
 
--(void)addAnnoWithLocation:(CLLocationCoordinate2D)location{
+
+-(void)addAnnoWithLocation:(PFObject*)obj{
     
-    location.latitude = 25.044377;
-    location.longitude = 121.557495;
+    PFGeoPoint *point = obj[@"geo"];
     
+    
+    CLLocationCoordinate2D location;
+    location.latitude = point.latitude;
+    location.longitude = point.longitude;
     
     //放插針
-    MyAnnotation *annoTrainStation = [[MyAnnotation alloc] initWithTitle:@"中壢市火車站" andSubTitle:@"桃園縣中壢市中和路139號" andCoordinate:location];
+    MyAnnotation *annoTrainStation = [[MyAnnotation alloc] initWithTitle:obj[@"name"] andSubTitle:obj[@"address"] andCoordinate:location];
     
     [map addAnnotation:annoTrainStation];
 }
@@ -141,11 +140,6 @@
 
 
 
-
-
-
-
-
 - (void)getAddressFromLocation:(CLLocation *)location {
     /*
      @property (nonatomic, readonly) NSString *name; // eg. Apple Inc.
@@ -186,7 +180,8 @@
             //NSLog(@"========================");
             NSString* address = [NSString stringWithFormat:@"%@%@%@%@%@%@",placemark.country,placemark.administrativeArea,placemark.locality,placemark.thoroughfare,placemark.subAdministrativeArea,placemark.subThoroughfare];
 
-            centreAddress.text = placemark.addressDictionary[@"Name"];
+            centreAddress.text = [NSString stringWithFormat:@"%@%@%@%@號",placemark.administrativeArea,placemark.locality,placemark.locality,placemark.subThoroughfare];
+           
             
         }
     }];
