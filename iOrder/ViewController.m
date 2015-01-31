@@ -13,6 +13,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "storeDetailViewController.h"
 #import <UIAlertController+Blocks.h>
+#import <UIAlertView+Blocks.h>
 #import <MapKit/MapKit.h>
 @interface ViewController () <MKMapViewDelegate, CLLocationManagerDelegate, UIScrollViewDelegate> {
 	IBOutlet MKMapView *map;
@@ -24,8 +25,9 @@
 	IBOutlet UILabel *centreAddress;
 	IBOutlet UIImageView *centreImageView;
 
-	NSArray *objs;
+	NSMutableArray *objs;
     
+    CLLocationCoordinate2D centre;
     //增加商店
     IBOutlet UIBarButtonItem *addStoreBtn;
     UIBarButtonItem *cancelBtn;
@@ -48,7 +50,7 @@
 	query.limit = 1000;
 
 	[query findObjectsInBackgroundWithBlock: ^(NSArray *objects, NSError *error) {
-	    objs = objects;
+	    objs = [[NSMutableArray alloc ]initWithArray:objects];
 	    for (PFObject *obj in objects) {
 	        [self addAnnoWithLocation:obj];
 		}
@@ -125,42 +127,40 @@
     isAdding = NO;
     [self addingCheck];
 
-    PFObject* newStore = [[PFObject alloc]initWithClassName:@"store"];
+    PFObject* newStore = [[PFObject alloc]initWithClassName:@"stores"];
     newStore[@"address"] = centreAddress.text;
     newStore[@"location"] = [centreAddress.text substringToIndex:3];
 
-    PFGeoPoint* point = [[PFGeoPoint alloc]init];
-    {//取得經緯度
-        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-        NSLog(@"%@",centreAddress.text);
-        [geocoder geocodeAddressString:centreAddress.text completionHandler:^(NSArray *placemarks, NSError *error) {
-            if (error){
-                [RMUniversalAlert showAlertInViewController:self withTitle:@"ERROR" message:error.localizedDescription cancelButtonTitle:@"確定" destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
-                return;
-            }
-            
-            NSLog(@"%d",placemarks.count);
-            CLPlacemark *placemark = [placemarks firstObject];                          //Line A
-            
-            point.longitude = placemark.location.coordinate.longitude;      //Line B
-            point.latitude = placemark.location.coordinate.latitude;
-            
-            newStore[@"geo"] = point;
-        }];
-    }
+    PFGeoPoint* point = [PFGeoPoint geoPointWithLatitude:centre.latitude longitude:centre.longitude];
+    newStore[@"geo"] = point;
+    
+    NSLog(@"%@",newStore);
 
+    
+    
+//    UIAlertView* alert = [UIAlertView showWithTitle:@"新增餐廳" message:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"確定"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+//        if (buttonIndex) {
+//            NSLog(@"%@",[alertView textFieldAtIndex:0].text);
+//        }
+//    }];
+//    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    [alert textFieldAtIndex:0].placeholder = @"新增餐廳";
+//    
+//    
+    
     UIAlertController* alert = [UIAlertController showAlertInViewController:self withTitle:@"新增餐廳" message:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@[@"確定"] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
         if (buttonIndex) {
-            newStore[@"name"] = ((UITextField*)alert.textFields[0]).text;
+            UITextField* textfield = controller.textFields[0];
+            newStore[@"name"] = textfield.text;
             
             [newStore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
+                    [objs addObject:newStore];
                     [self addAnnoWithLocation:newStore];
                 }else{
                     [RMUniversalAlert showAlertInViewController:self withTitle:@"err" message:error.localizedDescription cancelButtonTitle:@"ok" destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
                 }
             }];
-            
         }
     }];
     
@@ -246,7 +246,7 @@
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-	CLLocationCoordinate2D centre = [map centerCoordinate];
+	centre = [map centerCoordinate];
 	NSLog(@"%f , %f", centre.latitude, centre.longitude);
 
 	[self getAddressFromLocation:[[CLLocation alloc]initWithLatitude:centre.latitude longitude:centre.longitude]];
