@@ -23,6 +23,12 @@
 	IBOutlet UIImageView *centreImageView;
 
 	NSArray *objs;
+    
+    //增加商店
+    IBOutlet UIBarButtonItem *addStoreBtn;
+    UIBarButtonItem *cancelBtn;
+    IBOutlet UIBarButtonItem *okBtn;
+    BOOL isAdding;
 }
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
@@ -61,7 +67,6 @@
 - (void)addAnnoWithLocation:(PFObject *)obj {
 	PFGeoPoint *point = obj[@"geo"];
 
-
 	CLLocationCoordinate2D location;
 	location.latitude = point.latitude;
 	location.longitude = point.longitude;
@@ -73,6 +78,55 @@
 }
 
 #pragma mark - ib action
+
+- (IBAction)addStoreBtnPressed:(UIBarButtonItem *)sender {
+    isAdding = YES;
+    [self addingCheck];
+}
+
+-(void)cancelBtnPressed{
+    isAdding = NO;
+    [self addingCheck];
+}
+
+-(void)addingCheck{
+    
+    if (isAdding) {
+        if (!cancelBtn) {
+            cancelBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                     target:self
+                                                                action:@selector(cancelBtnPressed)];
+        }
+        self.navigationItem.rightBarButtonItem = cancelBtn;
+    }else{
+        self.navigationItem.rightBarButtonItem = addStoreBtn;
+    }
+    
+    okBtn.enabled = isAdding;
+    centreAddress.hidden = !isAdding;
+    centreImageView.hidden = !isAdding;
+}
+
+
+- (IBAction)okBtnPressed:(UIBarButtonItem *)sender {
+    
+    if ([centreAddress.text rangeOfString:@"(null)"].location > 0 ) {
+        [RMUniversalAlert showAlertInViewController:self withTitle:@"地址錯誤" message:@"請移至其他位置" cancelButtonTitle:@"確認" destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:^(RMUniversalAlert *alert, NSInteger buttonIndex) {
+            
+        }];
+        
+        return;
+    }
+    
+    PFObject* newStore = [[PFObject alloc]initWithClassName:@"store"];
+    newStore[@"address"] = centreAddress.text;
+    newStore[@"location"] = [centreAddress.text substringToIndex:3];
+    
+    
+}
+
+
+
 
 - (IBAction)locationToUser:(UIButton *)sender {
 	if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
@@ -180,7 +234,6 @@
 	UIBezierPath *oval2Path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(3, 3, 10, 10)];
 	[UIColor.whiteColor setFill];
 	[oval2Path fill];
-
 
 
 	UIImage *bezierImage = UIGraphicsGetImageFromCurrentImageContext();

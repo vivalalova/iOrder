@@ -19,6 +19,7 @@
 		9E4E77431A7CB50A00AE9130 /* navViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E77421A7CB50A00AE9130 /* navViewController.m */; };
 		9E4E77461A7CC2A200AE9130 /* datePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E77451A7CC2A200AE9130 /* datePickerViewController.m */; };
 		9E4E77491A7CF00B00AE9130 /* commentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E77481A7CF00B00AE9130 /* commentViewController.m */; };
+		9E4E774C1A7D05D200AE9130 /* commentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E774B1A7D05D200AE9130 /* commentCollectionViewCell.m */; };
 		9EFBD30E1A7BD85D00CF8D68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD30D1A7BD85D00CF8D68 /* main.m */; };
 		9EFBD3111A7BD85D00CF8D68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD3101A7BD85D00CF8D68 /* AppDelegate.m */; };
 		9EFBD3141A7BD85D00CF8D68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD3131A7BD85D00CF8D68 /* ViewController.m */; };
@@ -67,6 +68,8 @@
 		9E4E77451A7CC2A200AE9130 /* datePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = datePickerViewController.m; sourceTree = "<group>"; };
 		9E4E77471A7CF00B00AE9130 /* commentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentViewController.h; sourceTree = "<group>"; };
 		9E4E77481A7CF00B00AE9130 /* commentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentViewController.m; sourceTree = "<group>"; };
+		9E4E774A1A7D05D200AE9130 /* commentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentCollectionViewCell.h; sourceTree = "<group>"; };
+		9E4E774B1A7D05D200AE9130 /* commentCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentCollectionViewCell.m; sourceTree = "<group>"; };
 		9EFBD3081A7BD85D00CF8D68 /* iOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EFBD30C1A7BD85D00CF8D68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EFBD30D1A7BD85D00CF8D68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -251,6 +254,8 @@
 				9E4E772B1A7C669300AE9130 /* LoKit */,
 				9EFBD3401A7C100600CF8D68 /* MyAnnotation.h */,
 				9EFBD3411A7C100600CF8D68 /* MyAnnotation.m */,
+				9E4E774A1A7D05D200AE9130 /* commentCollectionViewCell.h */,
+				9E4E774B1A7D05D200AE9130 /* commentCollectionViewCell.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -413,6 +418,7 @@
 				9EFBD3141A7BD85D00CF8D68 /* ViewController.m in Sources */,
 				9EFBD3421A7C100600CF8D68 /* MyAnnotation.m in Sources */,
 				9EFBD3111A7BD85D00CF8D68 /* AppDelegate.m in Sources */,
+				9E4E774C1A7D05D200AE9130 /* commentCollectionViewCell.m in Sources */,
 				9E4E773C1A7C66A900AE9130 /* LOImageView.m in Sources */,
 				9E4E773D1A7C66A900AE9130 /* LOLabel.m in Sources */,
 				9E4E77291A7C55EB00AE9130 /* storeDetailViewController.m in Sources */,

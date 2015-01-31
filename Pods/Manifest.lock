@@ -1,0 +1,61 @@
+PODS:
+  - Bolts (1.1.3)
+  - Facebook-iOS-SDK (3.22.0):
+    - Bolts (~> 1.0)
+  - JazzHands (0.1.1)
+  - MBProgressHUD (0.9)
+  - Parse (1.6.2):
+    - Bolts (~> 1.1)
+  - ParseCrashReporting (1.6.2):
+    - Parse (~> 1.6.2)
+  - ParseFacebookUtils (1.6.2):
+    - Facebook-iOS-SDK (~> 3.20)
+    - Parse (~> 1.6.2)
+  - pop (1.0.7)
+  - RMUniversalAlert (0.6):
+    - RMUniversalAlert/Core (= 0.6)
+  - RMUniversalAlert/Core (0.6):
+    - UIActionSheet+Blocks (>= 0.8)
+    - UIAlertController+Blocks (>= 0.8)
+    - UIAlertView+Blocks (>= 0.8)
+  - SDWebImage (3.7.1):
+    - SDWebImage/Core (= 3.7.1)
+  - SDWebImage/Core (3.7.1)
+  - UIActionSheet+Blocks (0.8.1)
+  - UIAlertController+Blocks (0.8)
+  - UIAlertView+Blocks (0.8.1)
+  - VBFPopFlatButton (0.0.6):
+    - pop
+
+DEPENDENCIES:
+  - Facebook-iOS-SDK
+  - JazzHands
+  - MBProgressHUD
+  - Parse
+  - ParseCrashReporting
+  - ParseFacebookUtils
+  - pop
+  - RMUniversalAlert
+  - SDWebImage
+  - UIActionSheet+Blocks
+  - UIAlertController+Blocks
+  - UIAlertView+Blocks
+  - VBFPopFlatButton
+
+SPEC CHECKSUMS:
+  Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
+  Facebook-iOS-SDK: 0eda8ff7120aada0a9c5f98552f7625da6c3440a
+  JazzHands: d39c6b19bfe34946d220fdede80930b7be37f199
+  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
+  Parse: 60d65108fe39da77ec16c9e51d74b4d296b21424
+  ParseCrashReporting: eb150f792ea987456f9ae4ccca4bbf9236c8ddd0
+  ParseFacebookUtils: 0b86cd67283c60d10e3ddc8427f989f5e60ebbd7
+  pop: 2f14a1ea61339767af9e66741b418c831b3844df
+  RMUniversalAlert: 29efbec1d069082dd851054042b934550bc70b45
+  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
+  UIActionSheet+Blocks: c8b9c02f3d08964e8f7a4202f004a639c15eab80
+  UIAlertController+Blocks: a02869a586a1e242accabc86beb5f08f00998a76
+  UIAlertView+Blocks: 0b749f1f7bd5131ff2233b30a406c1585a7171b2
+  VBFPopFlatButton: 79ca72185b76c2dff8861263118a8c47ef1c1043
+
+COCOAPODS: 0.35.0

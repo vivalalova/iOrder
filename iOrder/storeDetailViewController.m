@@ -43,6 +43,8 @@
     IBOutlet NSLayoutConstraint *UpNDownConstant;
     
     UIImageView* animationImageView;
+    
+
 }
 
 @end
@@ -124,8 +126,10 @@
 }
 
 - (IBAction)routeBtnPressed:(UIButton *)sender {
-	NSString *stringURLScheme = [NSString stringWithFormat:@"http://maps.google.com/maps?q=%@", addressLabel.text];
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[stringURLScheme stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    [RMUniversalAlert showAlertInViewController:self withTitle:@"導航" message:@"離開本應用去導航嗎" cancelButtonTitle:@"取消" destructiveButtonTitle:@"就去吧" otherButtonTitles:nil tapBlock:^(RMUniversalAlert *alert, NSInteger buttonIndex) {
+        NSString *stringURLScheme = [NSString stringWithFormat:@"http://maps.google.com/maps?q=%@", addressLabel.text];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[stringURLScheme stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    }];
 }
 
 - (IBAction)orderBtnPressed:(LOButton *)sender {

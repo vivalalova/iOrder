@@ -1,0 +1,11 @@
+{
+    "applications": {
+        "_default": {
+            "link": "joyPhotos"
+        }, 
+        "joyPhotos": {
+            "applicationId": "oan4gjzHt8nUsnPDe7GUScqRtYycIRt6wcpRET5s", 
+            "masterKey": "y8nFVFKuTGkA1kWfSAp5iqa2OFfIect3qlAzaSng"
+        }
+    }
+}
