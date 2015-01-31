@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		3BC0A9E77AC77D31D11148B0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A34F67C24A5A07CEA4B68941 /* libPods.a */; };
+		9E4E77291A7C55EB00AE9130 /* storeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E77281A7C55EB00AE9130 /* storeDetailViewController.m */; };
+		9E4E77381A7C66A900AE9130 /* LOUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E772D1A7C66A900AE9130 /* LOUIKit.m */; };
+		9E4E77391A7C66A900AE9130 /* LOView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E772F1A7C66A900AE9130 /* LOView.m */; };
+		9E4E773A1A7C66A900AE9130 /* LOButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E77311A7C66A900AE9130 /* LOButton.m */; };
+		9E4E773B1A7C66A900AE9130 /* LOTextfield.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E77331A7C66A900AE9130 /* LOTextfield.m */; };
+		9E4E773C1A7C66A900AE9130 /* LOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E77351A7C66A900AE9130 /* LOImageView.m */; };
+		9E4E773D1A7C66A900AE9130 /* LOLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E77371A7C66A900AE9130 /* LOLabel.m */; };
+		9E4E77401A7C79E000AE9130 /* landingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E773F1A7C79E000AE9130 /* landingViewController.m */; };
 		9EFBD30E1A7BD85D00CF8D68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD30D1A7BD85D00CF8D68 /* main.m */; };
 		9EFBD3111A7BD85D00CF8D68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD3101A7BD85D00CF8D68 /* AppDelegate.m */; };
 		9EFBD3141A7BD85D00CF8D68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD3131A7BD85D00CF8D68 /* ViewController.m */; };
@@ -21,8 +29,6 @@
 		9EFBD3421A7C100600CF8D68 /* MyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD3411A7C100600CF8D68 /* MyAnnotation.m */; };
 		9EFBD3451A7C244200CF8D68 /* network.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD3441A7C244200CF8D68 /* network.m */; };
 		9EFBD3471A7C297000CF8D68 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EFBD3461A7C297000CF8D68 /* CoreLocation.framework */; };
-		9EFBD3491A7C2F4A00CF8D68 /* define_location-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EFBD3481A7C2F4A00CF8D68 /* define_location-50.png */; };
-		9EFBD34B1A7C3BC800CF8D68 /* location-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EFBD34A1A7C3BC800CF8D68 /* location-50.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +43,22 @@
 
 /* Begin PBXFileReference section */
 		49AD41BCFDA29B6883A95020 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		9E4E77271A7C55EB00AE9130 /* storeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = storeDetailViewController.h; sourceTree = "<group>"; };
+		9E4E77281A7C55EB00AE9130 /* storeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = storeDetailViewController.m; sourceTree = "<group>"; };
+		9E4E772C1A7C66A900AE9130 /* LOUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LOUIKit.h; sourceTree = "<group>"; };
+		9E4E772D1A7C66A900AE9130 /* LOUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LOUIKit.m; sourceTree = "<group>"; };
+		9E4E772E1A7C66A900AE9130 /* LOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LOView.h; sourceTree = "<group>"; };
+		9E4E772F1A7C66A900AE9130 /* LOView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LOView.m; sourceTree = "<group>"; };
+		9E4E77301A7C66A900AE9130 /* LOButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LOButton.h; sourceTree = "<group>"; };
+		9E4E77311A7C66A900AE9130 /* LOButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LOButton.m; sourceTree = "<group>"; };
+		9E4E77321A7C66A900AE9130 /* LOTextfield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LOTextfield.h; sourceTree = "<group>"; };
+		9E4E77331A7C66A900AE9130 /* LOTextfield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LOTextfield.m; sourceTree = "<group>"; };
+		9E4E77341A7C66A900AE9130 /* LOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LOImageView.h; sourceTree = "<group>"; };
+		9E4E77351A7C66A900AE9130 /* LOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LOImageView.m; sourceTree = "<group>"; };
+		9E4E77361A7C66A900AE9130 /* LOLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LOLabel.h; sourceTree = "<group>"; };
+		9E4E77371A7C66A900AE9130 /* LOLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LOLabel.m; sourceTree = "<group>"; };
+		9E4E773E1A7C79E000AE9130 /* landingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = landingViewController.h; sourceTree = "<group>"; };
+		9E4E773F1A7C79E000AE9130 /* landingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = landingViewController.m; sourceTree = "<group>"; };
 		9EFBD3081A7BD85D00CF8D68 /* iOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EFBD30C1A7BD85D00CF8D68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EFBD30D1A7BD85D00CF8D68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -61,8 +83,6 @@
 		9EFBD3431A7C244200CF8D68 /* network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = network.h; sourceTree = "<group>"; };
 		9EFBD3441A7C244200CF8D68 /* network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = network.m; sourceTree = "<group>"; };
 		9EFBD3461A7C297000CF8D68 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		9EFBD3481A7C2F4A00CF8D68 /* define_location-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "define_location-50.png"; sourceTree = "<group>"; };
-		9EFBD34A1A7C3BC800CF8D68 /* location-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location-50.png"; sourceTree = "<group>"; };
 		A34F67C24A5A07CEA4B68941 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78D9243DF89205C7198737E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +127,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9E4E772B1A7C669300AE9130 /* LoKit */ = {
+			isa = PBXGroup;
+			children = (
+				9E4E772C1A7C66A900AE9130 /* LOUIKit.h */,
+				9E4E772D1A7C66A900AE9130 /* LOUIKit.m */,
+				9E4E772E1A7C66A900AE9130 /* LOView.h */,
+				9E4E772F1A7C66A900AE9130 /* LOView.m */,
+				9E4E77301A7C66A900AE9130 /* LOButton.h */,
+				9E4E77311A7C66A900AE9130 /* LOButton.m */,
+				9E4E77321A7C66A900AE9130 /* LOTextfield.h */,
+				9E4E77331A7C66A900AE9130 /* LOTextfield.m */,
+				9E4E77341A7C66A900AE9130 /* LOImageView.h */,
+				9E4E77351A7C66A900AE9130 /* LOImageView.m */,
+				9E4E77361A7C66A900AE9130 /* LOLabel.h */,
+				9E4E77371A7C66A900AE9130 /* LOLabel.m */,
+			);
+			name = LoKit;
+			sourceTree = "<group>";
+		};
 		9EFBD2FF1A7BD85D00CF8D68 = {
 			isa = PBXGroup;
 			children = (
@@ -135,8 +174,6 @@
 				9EFBD3391A7BEF3800CF8D68 /* view */,
 				9EFBD3151A7BD85D00CF8D68 /* Main.storyboard */,
 				9EFBD3181A7BD85D00CF8D68 /* Images.xcassets */,
-				9EFBD34A1A7C3BC800CF8D68 /* location-50.png */,
-				9EFBD3481A7C2F4A00CF8D68 /* define_location-50.png */,
 				9EFBD31A1A7BD85D00CF8D68 /* LaunchScreen.xib */,
 				9EFBD30B1A7BD85D00CF8D68 /* Supporting Files */,
 			);
@@ -188,8 +225,12 @@
 		9EFBD3381A7BEF2300CF8D68 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				9E4E773E1A7C79E000AE9130 /* landingViewController.h */,
+				9E4E773F1A7C79E000AE9130 /* landingViewController.m */,
 				9EFBD3121A7BD85D00CF8D68 /* ViewController.h */,
 				9EFBD3131A7BD85D00CF8D68 /* ViewController.m */,
+				9E4E77271A7C55EB00AE9130 /* storeDetailViewController.h */,
+				9E4E77281A7C55EB00AE9130 /* storeDetailViewController.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -197,6 +238,7 @@
 		9EFBD3391A7BEF3800CF8D68 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				9E4E772B1A7C669300AE9130 /* LoKit */,
 				9EFBD3401A7C100600CF8D68 /* MyAnnotation.h */,
 				9EFBD3411A7C100600CF8D68 /* MyAnnotation.m */,
 			);
@@ -289,9 +331,7 @@
 			files = (
 				9EFBD3171A7BD85D00CF8D68 /* Main.storyboard in Resources */,
 				9EFBD31C1A7BD85D00CF8D68 /* LaunchScreen.xib in Resources */,
-				9EFBD3491A7C2F4A00CF8D68 /* define_location-50.png in Resources */,
 				9EFBD3191A7BD85D00CF8D68 /* Images.xcassets in Resources */,
-				9EFBD34B1A7C3BC800CF8D68 /* location-50.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,13 +395,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E4E77381A7C66A900AE9130 /* LOUIKit.m in Sources */,
 				9EFBD3331A7BEEEB00CF8D68 /* networkHelper.m in Sources */,
 				9EFBD3141A7BD85D00CF8D68 /* ViewController.m in Sources */,
 				9EFBD3451A7C244200CF8D68 /* network.m in Sources */,
 				9EFBD3421A7C100600CF8D68 /* MyAnnotation.m in Sources */,
 				9EFBD3111A7BD85D00CF8D68 /* AppDelegate.m in Sources */,
+				9E4E773C1A7C66A900AE9130 /* LOImageView.m in Sources */,
+				9E4E773D1A7C66A900AE9130 /* LOLabel.m in Sources */,
+				9E4E77291A7C55EB00AE9130 /* storeDetailViewController.m in Sources */,
+				9E4E77401A7C79E000AE9130 /* landingViewController.m in Sources */,
 				9EFBD30E1A7BD85D00CF8D68 /* main.m in Sources */,
+				9E4E773B1A7C66A900AE9130 /* LOTextfield.m in Sources */,
+				9E4E773A1A7C66A900AE9130 /* LOButton.m in Sources */,
 				9EFBD3361A7BEEFA00CF8D68 /* Reachability.m in Sources */,
+				9E4E77391A7C66A900AE9130 /* LOView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +536,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = PrefixHeader.pch;
 				INFOPLIST_FILE = iOrder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8e6f19d2-df91-41a7-8c0f-9ecc814b22e4";
@@ -503,6 +552,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = PrefixHeader.pch;
 				INFOPLIST_FILE = iOrder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8e6f19d2-df91-41a7-8c0f-9ecc814b22e4";

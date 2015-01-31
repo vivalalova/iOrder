@@ -11,6 +11,7 @@
 #import <MapKit/MapKit.h>
 #import "MyAnnotation.h"
 #import <CoreLocation/CoreLocation.h>
+#import "storeDetailViewController.h"
 @interface ViewController ()<MKMapViewDelegate,CLLocationManagerDelegate,UIScrollViewDelegate>{
     
     IBOutlet MKMapView *map;
@@ -21,6 +22,8 @@
     
     IBOutlet UILabel *centreAddress;
     IBOutlet UIImageView *centreImageView;
+    
+    NSArray* objs;
     
 }
 @property (strong,nonatomic) CLLocationManager* locationManager;
@@ -39,7 +42,7 @@
     query.limit = 1000;
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
+        objs = objects;
         for (PFObject* obj in objects) {
             [self addAnnoWithLocation:obj];
         }
@@ -55,8 +58,7 @@
     _locationManager.delegate = self;
     _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     _locationManager.distanceFilter = 100;
-    // 使用前判断ios的版本
-    [_locationManager requestWhenInUseAuthorization];//添加这句
+    [_locationManager requestWhenInUseAuthorization];
     [_locationManager startUpdatingLocation];
 }
 
@@ -122,13 +124,37 @@
         annoView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
         annoView.canShowCallout = YES;
         annoView.image = image;
-        annoView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        annoView.leftCalloutAccessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ice cream 1 thumb.jpg"]];
+        
+        UIButton* rightBtn =  [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        annoView.rightCalloutAccessoryView = rightBtn;
+//        annoView.leftCalloutAccessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ice cream 1 thumb.jpg"]];
     }
+    
     
     return annoView;
 }
-
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
+    
+    NSLog(@"you touched the disclosure indicator");
+    //launch a new view upon touching the disclosure indicator
+    
+    NSString* title = view.annotation.title;
+    
+    
+    int index = 0;
+    for (PFObject* obj in objs) {
+        if ([obj[@"name"] isEqualToString:title]) {
+            NSLog(@"%@",title);
+            
+            storeDetailViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"storeDetailViewController"];
+            controller.obj = obj;
+            [self.navigationController pushViewController:controller animated:YES];
+            return;
+        }
+        index++;
+    }
+    
+}
 
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
     CLLocationCoordinate2D centre = [map centerCoordinate];
@@ -141,21 +167,6 @@
 
 
 - (void)getAddressFromLocation:(CLLocation *)location {
-    /*
-     @property (nonatomic, readonly) NSString *name; // eg. Apple Inc.
-     @property (nonatomic, readonly) NSString *thoroughfare; // street address, eg. 1 Infinite Loop
-     @property (nonatomic, readonly) NSString *subThoroughfare; // eg. 1
-     @property (nonatomic, readonly) NSString *locality; // city, eg. Cupertino
-     @property (nonatomic, readonly) NSString *subLocality; // neighborhood, common name, eg. Mission District
-     @property (nonatomic, readonly) NSString *administrativeArea; // state, eg. CA
-     @property (nonatomic, readonly) NSString *subAdministrativeArea; // county, eg. Santa Clara
-     @property (nonatomic, readonly) NSString *postalCode; // zip code, eg. 95014
-     @property (nonatomic, readonly) NSString *ISOcountryCode; // eg. US
-     @property (nonatomic, readonly) NSString *country; // eg. United States
-     @property (nonatomic, readonly) NSString *inlandWater; // eg. Lake Tahoe
-     @property (nonatomic, readonly) NSString *ocean; // eg. Pacific Ocean
-     @property (nonatomic, readonly) NSArray *areasOfInterest; // eg. Golden Gate Park
-     */
     
     CLGeocoder *geoCoder = [[CLGeocoder alloc]init];
     
@@ -163,52 +174,21 @@
     [geoCoder reverseGeocodeLocation:location completionHandler: ^(NSArray *placemarks, NSError *error) {
         if (placemarks && placemarks.count > 0) {
             CLPlacemark *placemark = placemarks[0];
-            
-            //NSLog(@"did get");
-            //NSString *address;
-            
-            //address = [NSString stringWithFormat:@"%@,%@,%@,%@", placemark.subThoroughfare, placemark.thoroughfare, placemark.locality, placemark.administrativeArea];
-            
-            //NSLog(@"%@", address);
-            //NSLog(@"%@", placemark.country);
-            //NSLog(@"%@", placemark.locality);
-            //NSLog(@"%@", placemark.thoroughfare);
-            //NSLog(@"%@", placemark.subLocality);
-            //NSLog(@"%@", placemark.name);            //路名加門牌 或公司名?
-            //NSLog(@"%@", placemark.postalCode);
-            
-            //NSLog(@"========================");
-            NSString* address = [NSString stringWithFormat:@"%@%@%@%@%@%@",placemark.country,placemark.administrativeArea,placemark.locality,placemark.thoroughfare,placemark.subAdministrativeArea,placemark.subThoroughfare];
-
             centreAddress.text = [NSString stringWithFormat:@"%@%@%@%@號",placemark.administrativeArea,placemark.locality,placemark.locality,placemark.subThoroughfare];
-           
-            
         }
     }];
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 - (UIImage * ) makeImageofColor:(UIColor *)color{
     UIGraphicsBeginImageContext(CGSizeMake(16, 16));
 
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, [UIColor greenColor].CGColor);
+    CGContextSetFillColorWithColor(context, color.CGColor);
     
     //// Oval Drawing
     UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(0, 0, 16, 16)];
-    [UIColor.greenColor setFill];
+    [color setFill];
     [ovalPath fill];
     
     

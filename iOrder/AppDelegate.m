@@ -10,7 +10,7 @@
 
 #import <Parse/Parse.h>
 #import <ParseCrashReporting/ParseCrashReporting.h>
-
+#import <PFFacebookUtils.h>
 @interface AppDelegate ()
 
 @end
@@ -25,6 +25,8 @@
     
     [self parseWithOptions:launchOptions];
     
+    [PFFacebookUtils initializeFacebook];
+    
     
     return YES;
 }
@@ -37,9 +39,10 @@
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    [PFAnonymousUtils logInWithBlock:^(PFUser *user, NSError *error) {
-    }];
+//    [PFAnonymousUtils logInWithBlock:^(PFUser *user, NSError *error) {
+//    }];
 }
+
 
 -(void)regsignPushNotification{
     // ios8
@@ -65,6 +68,18 @@
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"failed to get device token \n%@", error);
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:[PFFacebookUtils session]];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    [[PFFacebookUtils session] close];
 }
 
 @end
