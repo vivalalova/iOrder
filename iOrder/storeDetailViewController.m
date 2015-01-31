@@ -10,8 +10,11 @@
 #import <Parse/Parse.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <MapKit/MapKit.h>
+#import "datePickerViewController.h"
+#import <Social/Social.h>
+#import <MessageUI/MessageUI.h>
 
-@interface storeDetailViewController () {
+@interface storeDetailViewController ()<datePickerVCDelegate,MFMailComposeViewControllerDelegate> {
 	IBOutlet UIImageView *streetImageView;
 	IBOutlet UILabel *nameLabel;
 	IBOutlet UILabel *addressLabel;
@@ -23,6 +26,16 @@
 	int sumScore;
 
 	IBOutlet UIView *fakeAlertView;
+    
+    
+    IBOutlet UIView *dateContainerView;
+    IBOutlet NSLayoutConstraint *dateConstant;
+    
+    IBOutlet UIView *blackView;
+    datePickerViewController* datePickerController;
+    
+    SLComposeViewController *rexPost;
+
 }
 
 @end
@@ -112,6 +125,21 @@
 }
 
 - (IBAction)groupBtnPressed:(LOButton *)sender {
+    
+    if (dateConstant.constant == 0) {
+        [UIView animateWithDuration:0.3 animations:^{
+            dateConstant.constant = -216;
+            [self.view layoutIfNeeded];
+            blackView.hidden = YES;
+        }];
+    }else{
+        [UIView animateWithDuration:0.3 animations:^{
+            dateConstant.constant = 0;
+            [self.view layoutIfNeeded];
+            blackView.hidden = NO;
+        }];
+    }
+
 }
 
 - (IBAction)voteUp:(UIButton *)sender {
@@ -204,5 +232,72 @@
 	view.layer.shadowOpacity = 0.15;
 	view.layer.shadowOffset = size;
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if (segue.identifier.length == 0) {
+        return;
+    }
+    
+    if ([segue.identifier isEqualToString:@"datePicker"]) {
+        datePickerController = segue.destinationViewController;
+        datePickerController.delegate = self;
+    }
+}
+
+#pragma mark - date picker 
+
+-(void)datePickerDidCanceled:(datePickerViewController *)controller{
+    [UIView animateWithDuration:0.3 animations:^{
+        dateConstant.constant = 216;
+        [self.view layoutIfNeeded];
+        blackView.hidden = YES;
+    }];
+}
+
+-(void)datePicker:(datePickerViewController *)controller didEndWithDateString:(NSString *)dateString{
+    NSLog(@"%@",dateString);
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        dateConstant.constant = 216;
+        [self.view layoutIfNeeded];
+        blackView.hidden = YES;
+        
+       //寄信
+        
+        
+        [self contactFriendWithEmail:dateString];
+    }];
+}
+
+#pragma mark - mail
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    [self dismissViewControllerAnimated:YES completion: ^{
+    }];
+}
+- (void)contactFriendWithEmail:(NSString*)dateString {
+    MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
+    controller.mailComposeDelegate = self;
+    
+    //設定收件人與主旨等資訊
+    [controller setToRecipients:nil];
+    [controller setCcRecipients:nil];
+    //[controller setBccRecipients:[NSArray arrayWithObjects:@"我不能說", nil]];
+    [controller setSubject:[NSString stringWithFormat:@"咱們去吃%@吧!",self.storeObj[@"name"]]];
+    
+    //設定內文並且不使用HTML語法
+    [controller setMessageBody:[NSString stringWithFormat:@"時間:%@\n地點:%@",dateString,self.storeObj[@"address"]]
+                        isHTML:NO];
+    
+    //TODO:圖片
+    
+    controller.navigationBar.tintColor = [UIColor whiteColor];
+    
+    //顯示電子郵件畫面
+    [self presentViewController:controller animated:YES completion: ^{
+    }];
+}
+
+
 
 @end
