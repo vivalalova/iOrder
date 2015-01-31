@@ -95,16 +95,14 @@
 	    else {
 	        if (user.isNew) {
 	            NSLog(@"User with facebook signed up and logged in!");
-
-
 			}
 	        else {
 	            NSLog(@"User with facebook logged in!");
 			}
-            UINavigationController *nav = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"firstNav"];
+	        UINavigationController *nav = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"firstNav"];
 
-            [self presentViewController:nav animated:NO completion: ^{
-            }];
+	        [self presentViewController:nav animated:NO completion: ^{
+			}];
 		}
 	}];
 }

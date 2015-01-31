@@ -8,9 +8,8 @@
 
 #import "datePickerViewController.h"
 
-@interface datePickerViewController (){
-    
-    IBOutlet UIDatePicker *datePicker;
+@interface datePickerViewController () {
+	IBOutlet UIDatePicker *datePicker;
 }
 
 @end
@@ -18,23 +17,22 @@
 @implementation datePickerViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+	[super viewDidLoad];
+	// Do any additional setup after loading the view.
 }
+
 - (IBAction)canceled:(UIButton *)sender {
-    [self.delegate datePickerDidCanceled:self];
+	[self.delegate datePickerDidCanceled:self];
 }
+
 - (IBAction)okPressed:(UIButton *)sender {
-    
-    NSDate* date = datePicker.date;
-    NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"MM月dd日HH點mm分"];
-    
-    NSString* dateString = [formatter stringFromDate:date];
-    
-    [self.delegate datePicker:self didEndWithDateString:dateString];
+	NSDate *date = datePicker.date;
+	NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+	[formatter setDateFormat:@"MM月dd日HH點mm分"];
+
+	NSString *dateString = [formatter stringFromDate:date];
+
+	[self.delegate datePicker:self didEndWithDateString:dateString];
 }
-
-
 
 @end

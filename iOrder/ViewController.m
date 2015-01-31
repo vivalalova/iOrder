@@ -26,13 +26,13 @@
 	IBOutlet UIImageView *centreImageView;
 
 	NSMutableArray *objs;
-    
-    CLLocationCoordinate2D centre;
-    //增加商店
-    IBOutlet UIBarButtonItem *addStoreBtn;
-    UIBarButtonItem *cancelBtn;
-    IBOutlet UIBarButtonItem *okBtn;
-    BOOL isAdding;
+
+	CLLocationCoordinate2D centre;
+	//增加商店
+	IBOutlet UIBarButtonItem *addStoreBtn;
+	UIBarButtonItem *cancelBtn;
+	IBOutlet UIBarButtonItem *okBtn;
+	BOOL isAdding;
 }
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
@@ -50,7 +50,7 @@
 	query.limit = 1000;
 
 	[query findObjectsInBackgroundWithBlock: ^(NSArray *objects, NSError *error) {
-	    objs = [[NSMutableArray alloc ]initWithArray:objects];
+	    objs = [[NSMutableArray alloc]initWithArray:objects];
 	    for (PFObject *obj in objects) {
 	        [self addAnnoWithLocation:obj];
 		}
@@ -84,95 +84,76 @@
 #pragma mark - ib action
 
 - (IBAction)addStoreBtnPressed:(UIBarButtonItem *)sender {
-    isAdding = YES;
-    [self addingCheck];
+	isAdding = YES;
+	[self addingCheck];
 }
 
--(void)cancelBtnPressed{
-    isAdding = NO;
-    [self addingCheck];
+- (void)cancelBtnPressed {
+	isAdding = NO;
+	[self addingCheck];
 }
 
--(void)addingCheck{
-    
-    if (isAdding) {
-        if (!cancelBtn) {
-            cancelBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                                     target:self
-                                                                action:@selector(cancelBtnPressed)];
-        }
-        self.navigationItem.rightBarButtonItem = cancelBtn;
-    }else{
-        self.navigationItem.rightBarButtonItem = addStoreBtn;
-    }
-    
-    okBtn.enabled = isAdding;
-    centreAddress.hidden = !isAdding;
-    centreImageView.hidden = !isAdding;
-}
+- (void)addingCheck {
+	if (isAdding) {
+		if (!cancelBtn) {
+			cancelBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+			                                                         target:self
+			                                                         action:@selector(cancelBtnPressed)];
+		}
+		self.navigationItem.rightBarButtonItem = cancelBtn;
+	}
+	else {
+		self.navigationItem.rightBarButtonItem = addStoreBtn;
+	}
 
+	okBtn.enabled = isAdding;
+	centreAddress.hidden = !isAdding;
+	centreImageView.hidden = !isAdding;
+}
 
 - (IBAction)okBtnPressed:(UIBarButtonItem *)sender {
-    
-    NSLog(@"__ %lu" ,(unsigned long)[centreAddress.text rangeOfString:@"(null)"].location  );
-    
-    if ( [centreAddress.text rangeOfString:@"(null)"].location != NSNotFound ) {
-        [RMUniversalAlert showAlertInViewController:self withTitle:@"地址錯誤" message:@"請移至其他位置" cancelButtonTitle:@"確認" destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:^(RMUniversalAlert *alert, NSInteger buttonIndex) {
-            
-        }];
-        
-        return;
-    }
-    
-    isAdding = NO;
-    [self addingCheck];
+	NSLog(@"__ %lu", (unsigned long)[centreAddress.text rangeOfString:@"(null)"].location);
 
-    PFObject* newStore = [[PFObject alloc]initWithClassName:@"stores"];
-    newStore[@"address"] = centreAddress.text;
-    newStore[@"location"] = [centreAddress.text substringToIndex:3];
+	if ([centreAddress.text rangeOfString:@"(null)"].location != NSNotFound) {
+		[RMUniversalAlert showAlertInViewController:self withTitle:@"地址錯誤" message:@"請移至其他位置" cancelButtonTitle:@"確認" destructiveButtonTitle:nil otherButtonTitles:nil tapBlock: ^(RMUniversalAlert *alert, NSInteger buttonIndex) {
+		}];
 
-    PFGeoPoint* point = [PFGeoPoint geoPointWithLatitude:centre.latitude longitude:centre.longitude];
-    newStore[@"geo"] = point;
-    
-    NSLog(@"%@",newStore);
+		return;
+	}
 
-    
-    
-//    UIAlertView* alert = [UIAlertView showWithTitle:@"新增餐廳" message:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"確定"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-//        if (buttonIndex) {
-//            NSLog(@"%@",[alertView textFieldAtIndex:0].text);
-//        }
-//    }];
-//    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-//    [alert textFieldAtIndex:0].placeholder = @"新增餐廳";
-//    
-//    
-    
-    UIAlertController* alert = [UIAlertController showAlertInViewController:self withTitle:@"新增餐廳" message:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@[@"確定"] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
-        if (buttonIndex) {
-            UITextField* textfield = controller.textFields[0];
-            newStore[@"name"] = textfield.text;
-            
-            [newStore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (succeeded) {
-                    [objs addObject:newStore];
-                    [self addAnnoWithLocation:newStore];
-                }else{
-                    [RMUniversalAlert showAlertInViewController:self withTitle:@"err" message:error.localizedDescription cancelButtonTitle:@"ok" destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
-                }
-            }];
-        }
-    }];
-    
-    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-       textField.placeholder = @"餐廳名稱";
-    }];
-    
-    
+	isAdding = NO;
+	[self addingCheck];
+
+	PFObject *newStore = [[PFObject alloc]initWithClassName:@"stores"];
+	newStore[@"address"] = centreAddress.text;
+	newStore[@"location"] = [centreAddress.text substringToIndex:3];
+
+	PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:centre.latitude longitude:centre.longitude];
+	newStore[@"geo"] = point;
+
+	NSLog(@"%@", newStore);
+
+	UIAlertController *alert = [UIAlertController showAlertInViewController:self withTitle:@"新增餐廳" message:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@[@"確定"] tapBlock: ^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
+	    if (buttonIndex) {
+	        UITextField *textfield = controller.textFields[0];
+	        newStore[@"name"] = textfield.text;
+
+	        [newStore saveInBackgroundWithBlock: ^(BOOL succeeded, NSError *error) {
+	            if (succeeded) {
+	                [objs addObject:newStore];
+	                [self addAnnoWithLocation:newStore];
+				}
+	            else {
+	                [RMUniversalAlert showAlertInViewController:self withTitle:@"err" message:error.localizedDescription cancelButtonTitle:@"ok" destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
+				}
+			}];
+		}
+	}];
+
+	[alert addTextFieldWithConfigurationHandler: ^(UITextField *textField) {
+	    textField.placeholder = @"餐廳名稱";
+	}];
 }
-
-
-
 
 - (IBAction)locationToUser:(UIButton *)sender {
 	if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {

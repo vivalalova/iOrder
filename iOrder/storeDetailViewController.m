@@ -15,7 +15,7 @@
 #import <MessageUI/MessageUI.h>
 #import "commentViewController.h"
 
-@interface storeDetailViewController ()<datePickerVCDelegate,MFMailComposeViewControllerDelegate,commentViewControllerDelegate> {
+@interface storeDetailViewController () <datePickerVCDelegate, MFMailComposeViewControllerDelegate, commentViewControllerDelegate> {
 	IBOutlet UIImageView *streetImageView;
 	IBOutlet UILabel *nameLabel;
 	IBOutlet UILabel *addressLabel;
@@ -27,24 +27,22 @@
 	int sumScore;
 
 	IBOutlet UIView *fakeAlertView;
-    
-    
-    IBOutlet UIView *dateContainerView;
-    IBOutlet NSLayoutConstraint *dateConstant;
-    
-    IBOutlet UIView *blackView;
-    datePickerViewController* datePickerController;
-    
-    SLComposeViewController *rexPost;
 
-    IBOutlet UIScrollView *scrollview;
-    
-    IBOutlet LOButton *UpNDownView;
-    IBOutlet NSLayoutConstraint *UpNDownConstant;
-    
-    UIImageView* animationImageView;
-    
 
+	IBOutlet UIView *dateContainerView;
+	IBOutlet NSLayoutConstraint *dateConstant;
+
+	IBOutlet UIView *blackView;
+	datePickerViewController *datePickerController;
+
+	SLComposeViewController *rexPost;
+
+	IBOutlet UIScrollView *scrollview;
+
+	IBOutlet LOButton *UpNDownView;
+	IBOutlet NSLayoutConstraint *UpNDownConstant;
+
+	UIImageView *animationImageView;
 }
 
 @end
@@ -126,31 +124,30 @@
 }
 
 - (IBAction)routeBtnPressed:(UIButton *)sender {
-    [RMUniversalAlert showAlertInViewController:self withTitle:@"導航" message:@"離開本應用去導航嗎" cancelButtonTitle:@"取消" destructiveButtonTitle:@"就去吧" otherButtonTitles:nil tapBlock:^(RMUniversalAlert *alert, NSInteger buttonIndex) {
-        NSString *stringURLScheme = [NSString stringWithFormat:@"http://maps.google.com/maps?q=%@", addressLabel.text];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[stringURLScheme stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-    }];
+	[RMUniversalAlert showAlertInViewController:self withTitle:@"導航" message:@"離開本應用去導航嗎" cancelButtonTitle:@"取消" destructiveButtonTitle:@"就去吧" otherButtonTitles:nil tapBlock: ^(RMUniversalAlert *alert, NSInteger buttonIndex) {
+	    NSString *stringURLScheme = [NSString stringWithFormat:@"http://maps.google.com/maps?q=%@", addressLabel.text];
+	    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[stringURLScheme stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+	}];
 }
 
 - (IBAction)orderBtnPressed:(LOButton *)sender {
 }
 
 - (IBAction)groupBtnPressed:(LOButton *)sender {
-    
-    if (dateConstant.constant == 0) {
-        [UIView animateWithDuration:0.3 animations:^{
-            dateConstant.constant = -216;
-            [self.view layoutIfNeeded];
-            blackView.hidden = YES;
-        }];
-    }else{
-        [UIView animateWithDuration:0.3 animations:^{
-            dateConstant.constant = 0;
-            [self.view layoutIfNeeded];
-            blackView.hidden = NO;
-        }];
-    }
-
+	if (dateConstant.constant == 0) {
+		[UIView animateWithDuration:0.3 animations: ^{
+		    dateConstant.constant = -216;
+		    [self.view layoutIfNeeded];
+		    blackView.hidden = YES;
+		}];
+	}
+	else {
+		[UIView animateWithDuration:0.3 animations: ^{
+		    dateConstant.constant = 0;
+		    [self.view layoutIfNeeded];
+		    blackView.hidden = NO;
+		}];
+	}
 }
 
 - (IBAction)voteUp:(UIButton *)sender {
@@ -233,50 +230,47 @@
 #define kAlpha 0.8
 
 - (IBAction)redBtnPressed:(LOButton *)sender {
-    
-    CGRect frame = sender.frame;
-    frame.origin.y += 44;
-    animationImageView = [[UIImageView alloc]initWithFrame:frame];
-    animationImageView.image = [UIImage imageNamed:@"Oval 45"];
-    animationImageView.contentMode = UIViewContentModeScaleToFill;
-    
-    [self.navigationController.view addSubview:animationImageView];
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        animationImageView.frame = CGRectMake(0, 0, 1500, 1500);
-        animationImageView.center = sender.center;
-        animationImageView.alpha = kAlpha;
-    } completion:^(BOOL finished) {
-        
-        [self.view layoutIfNeeded];
-        
-        commentViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"commentViewController"];
-        controller.storeObj = self.storeObj;
-        controller.delegate = self;
-        
-        [self.navigationController pushViewController:controller animated:NO];
-        animationImageView.alpha = 1;
-        animationImageView.hidden = YES;
-    }];
+	CGRect frame = sender.frame;
+	frame.origin.y += 44;
+	animationImageView = [[UIImageView alloc]initWithFrame:frame];
+	animationImageView.image = [UIImage imageNamed:@"Oval 45"];
+	animationImageView.contentMode = UIViewContentModeScaleToFill;
+
+	[self.navigationController.view addSubview:animationImageView];
+
+	[UIView animateWithDuration:0.3 animations: ^{
+	    animationImageView.frame = CGRectMake(0, 0, 1500, 1500);
+	    animationImageView.center = sender.center;
+	    animationImageView.alpha = kAlpha;
+	} completion: ^(BOOL finished) {
+	    [self.view layoutIfNeeded];
+
+	    commentViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"commentViewController"];
+	    controller.storeObj = self.storeObj;
+	    controller.delegate = self;
+
+	    [self.navigationController pushViewController:controller animated:NO];
+	    animationImageView.alpha = 1;
+	    animationImageView.hidden = YES;
+	}];
 }
 
--(void)commentViewControllerDidDissmiss:(commentViewController *)controller{
-    animationImageView.hidden = NO;
-    
-    CGRect frame = UpNDownView.frame;
-    frame.origin.y += 44;
-    
-    animationImageView.alpha = kAlpha;
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        animationImageView.frame = frame;
-        animationImageView.alpha = 1;
-    } completion:^(BOOL finished) {
-        [animationImageView removeFromSuperview];
-        animationImageView = nil;
-    }];
-}
+- (void)commentViewControllerDidDissmiss:(commentViewController *)controller {
+	animationImageView.hidden = NO;
 
+	CGRect frame = UpNDownView.frame;
+	frame.origin.y += 44;
+
+	animationImageView.alpha = kAlpha;
+
+	[UIView animateWithDuration:0.3 animations: ^{
+	    animationImageView.frame = frame;
+	    animationImageView.alpha = 1;
+	} completion: ^(BOOL finished) {
+	    [animationImageView removeFromSuperview];
+	    animationImageView = nil;
+	}];
+}
 
 #pragma mark - shadow
 + (void)setShadow:(id)sender withRange:(CGSize)size {
@@ -292,69 +286,67 @@
 	view.layer.shadowOffset = size;
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
-    if (segue.identifier.length == 0) {
-        return;
-    }
-    
-    if ([segue.identifier isEqualToString:@"datePicker"]) {
-        datePickerController = segue.destinationViewController;
-        datePickerController.delegate = self;
-    }
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if (segue.identifier.length == 0) {
+		return;
+	}
+
+	if ([segue.identifier isEqualToString:@"datePicker"]) {
+		datePickerController = segue.destinationViewController;
+		datePickerController.delegate = self;
+	}
 }
 
-#pragma mark - date picker 
+#pragma mark - date picker
 
--(void)datePickerDidCanceled:(datePickerViewController *)controller{
-    [UIView animateWithDuration:0.3 animations:^{
-        dateConstant.constant = 216;
-        [self.view layoutIfNeeded];
-        blackView.hidden = YES;
-    }];
+- (void)datePickerDidCanceled:(datePickerViewController *)controller {
+	[UIView animateWithDuration:0.3 animations: ^{
+	    dateConstant.constant = 216;
+	    [self.view layoutIfNeeded];
+	    blackView.hidden = YES;
+	}];
 }
 
--(void)datePicker:(datePickerViewController *)controller didEndWithDateString:(NSString *)dateString{
-    NSLog(@"%@",dateString);
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        dateConstant.constant = 216;
-        [self.view layoutIfNeeded];
-        blackView.hidden = YES;
-        
-       //寄信
-        [self contactFriendWithEmail:dateString];
-    }];
+- (void)datePicker:(datePickerViewController *)controller didEndWithDateString:(NSString *)dateString {
+	NSLog(@"%@", dateString);
+
+	[UIView animateWithDuration:0.3 animations: ^{
+	    dateConstant.constant = 216;
+	    [self.view layoutIfNeeded];
+	    blackView.hidden = YES;
+
+	    //寄信
+	    [self contactFriendWithEmail:dateString];
+	}];
 }
 
 #pragma mark - mail
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-    [self dismissViewControllerAnimated:YES completion: ^{
-    }];
-}
-- (void)contactFriendWithEmail:(NSString*)dateString {
-    MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
-    controller.mailComposeDelegate = self;
-    
-    //設定收件人與主旨等資訊
-    [controller setToRecipients:nil];
-    [controller setCcRecipients:nil];
-    //[controller setBccRecipients:[NSArray arrayWithObjects:@"我不能說", nil]];
-    [controller setSubject:[NSString stringWithFormat:@"咱們去吃%@吧!",self.storeObj[@"name"]]];
-    
-    //設定內文並且不使用HTML語法
-    [controller setMessageBody:[NSString stringWithFormat:@"時間:%@\n地點:%@",dateString,self.storeObj[@"address"]]
-                        isHTML:NO];
-    
-    //TODO:圖片
-    
-    controller.navigationBar.tintColor = [UIColor whiteColor];
-    
-    //顯示電子郵件畫面
-    [self presentViewController:controller animated:YES completion: ^{
-    }];
+	[self dismissViewControllerAnimated:YES completion: ^{
+	}];
 }
 
+- (void)contactFriendWithEmail:(NSString *)dateString {
+	MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
+	controller.mailComposeDelegate = self;
 
+	//設定收件人與主旨等資訊
+	[controller setToRecipients:nil];
+	[controller setCcRecipients:nil];
+	//[controller setBccRecipients:[NSArray arrayWithObjects:@"我不能說", nil]];
+	[controller setSubject:[NSString stringWithFormat:@"咱們去吃%@吧!", self.storeObj[@"name"]]];
+
+	//設定內文並且不使用HTML語法
+	[controller setMessageBody:[NSString stringWithFormat:@"時間:%@\n地點:%@", dateString, self.storeObj[@"address"]]
+	                    isHTML:NO];
+
+	//TODO:圖片
+
+	controller.navigationBar.tintColor = [UIColor whiteColor];
+
+	//顯示電子郵件畫面
+	[self presentViewController:controller animated:YES completion: ^{
+	}];
+}
 
 @end

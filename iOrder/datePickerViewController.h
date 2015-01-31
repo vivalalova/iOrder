@@ -12,13 +12,13 @@
 @protocol datePickerVCDelegate;
 
 @interface datePickerViewController : UIViewController
-@property (weak,nonatomic) id<datePickerVCDelegate> delegate;
+@property (weak, nonatomic) id <datePickerVCDelegate> delegate;
 @end
 
 @protocol datePickerVCDelegate <NSObject>
 
--(void)datePickerDidCanceled:(datePickerViewController*)controller;
--(void)datePicker:(datePickerViewController*)controller didEndWithDateString:(NSString*)dateString;
+- (void)datePickerDidCanceled:(datePickerViewController *)controller;
+- (void)datePicker:(datePickerViewController *)controller didEndWithDateString:(NSString *)dateString;
 
 
 @end

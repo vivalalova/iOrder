@@ -11,12 +11,12 @@
 @protocol commentViewControllerDelegate;
 
 @interface commentViewController : UIViewController
-@property (weak,nonatomic) id<commentViewControllerDelegate> delegate;
-@property (weak,nonatomic) PFObject* storeObj;
+@property (weak, nonatomic) id <commentViewControllerDelegate> delegate;
+@property (weak, nonatomic) PFObject *storeObj;
 @end
 
 @protocol commentViewControllerDelegate <NSObject>
 
--(void)commentViewControllerDidDissmiss:(commentViewController*)controller;
+- (void)commentViewControllerDidDissmiss:(commentViewController *)controller;
 
 @end
