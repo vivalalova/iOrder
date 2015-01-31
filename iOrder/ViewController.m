@@ -12,6 +12,8 @@
 #import "MyAnnotation.h"
 #import <CoreLocation/CoreLocation.h>
 #import "storeDetailViewController.h"
+#import <UIAlertController+Blocks.h>
+#import <MapKit/MapKit.h>
 @interface ViewController () <MKMapViewDelegate, CLLocationManagerDelegate, UIScrollViewDelegate> {
 	IBOutlet MKMapView *map;
 
@@ -110,7 +112,9 @@
 
 - (IBAction)okBtnPressed:(UIBarButtonItem *)sender {
     
-    if ([centreAddress.text rangeOfString:@"(null)"].location > 0 ) {
+    NSLog(@"__ %lu" ,(unsigned long)[centreAddress.text rangeOfString:@"(null)"].location  );
+    
+    if ( [centreAddress.text rangeOfString:@"(null)"].location != NSNotFound ) {
         [RMUniversalAlert showAlertInViewController:self withTitle:@"地址錯誤" message:@"請移至其他位置" cancelButtonTitle:@"確認" destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:^(RMUniversalAlert *alert, NSInteger buttonIndex) {
             
         }];
@@ -118,9 +122,51 @@
         return;
     }
     
+    isAdding = NO;
+    [self addingCheck];
+
     PFObject* newStore = [[PFObject alloc]initWithClassName:@"store"];
     newStore[@"address"] = centreAddress.text;
     newStore[@"location"] = [centreAddress.text substringToIndex:3];
+
+    PFGeoPoint* point = [[PFGeoPoint alloc]init];
+    {//取得經緯度
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        NSLog(@"%@",centreAddress.text);
+        [geocoder geocodeAddressString:centreAddress.text completionHandler:^(NSArray *placemarks, NSError *error) {
+            if (error){
+                [RMUniversalAlert showAlertInViewController:self withTitle:@"ERROR" message:error.localizedDescription cancelButtonTitle:@"確定" destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
+                return;
+            }
+            
+            NSLog(@"%d",placemarks.count);
+            CLPlacemark *placemark = [placemarks firstObject];                          //Line A
+            
+            point.longitude = placemark.location.coordinate.longitude;      //Line B
+            point.latitude = placemark.location.coordinate.latitude;
+            
+            newStore[@"geo"] = point;
+        }];
+    }
+
+    UIAlertController* alert = [UIAlertController showAlertInViewController:self withTitle:@"新增餐廳" message:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@[@"確定"] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
+        if (buttonIndex) {
+            newStore[@"name"] = ((UITextField*)alert.textFields[0]).text;
+            
+            [newStore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    [self addAnnoWithLocation:newStore];
+                }else{
+                    [RMUniversalAlert showAlertInViewController:self withTitle:@"err" message:error.localizedDescription cancelButtonTitle:@"ok" destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
+                }
+            }];
+            
+        }
+    }];
+    
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+       textField.placeholder = @"餐廳名稱";
+    }];
     
     
 }
