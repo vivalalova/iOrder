@@ -71,7 +71,7 @@
 		9E4E774A1A7D05D200AE9130 /* commentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentCollectionViewCell.h; sourceTree = "<group>"; };
 		9E4E774B1A7D05D200AE9130 /* commentCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentCollectionViewCell.m; sourceTree = "<group>"; };
 		9EC8BD781A7D35A2006951D6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9EC8BD7A1A7D35A6006951D6 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		9EC8BD7B1A7D3651006951D6 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = SOURCE_ROOT; };
 		9EFBD3081A7BD85D00CF8D68 /* iOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EFBD30D1A7BD85D00CF8D68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9EFBD30F1A7BD85D00CF8D68 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 		9EFBD30B1A7BD85D00CF8D68 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9EC8BD7A1A7D35A6006951D6 /* PrefixHeader.pch */,
+				9EC8BD7B1A7D3651006951D6 /* PrefixHeader.pch */,
 				9EC8BD781A7D35A2006951D6 /* Info.plist */,
 				9EFBD30D1A7BD85D00CF8D68 /* main.m */,
 			);
