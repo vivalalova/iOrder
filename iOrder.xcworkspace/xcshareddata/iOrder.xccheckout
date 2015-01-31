@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3C4C8E88-822F-418C-ACE3-F527BD671997</string>
+	<key>IDESourceControlProjectName</key>
+	<string>iOrder</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8CDB622ECB029474482857872AEFAA95C38EF5AB</key>
+		<string>bitbucket.org:vivalalova/iorder.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iOrder.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8CDB622ECB029474482857872AEFAA95C38EF5AB</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>bitbucket.org:vivalalova/iorder.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8CDB622ECB029474482857872AEFAA95C38EF5AB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8CDB622ECB029474482857872AEFAA95C38EF5AB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iOrder</string>
+		</dict>
+	</array>
+</dict>
+</plist>

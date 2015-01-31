@@ -20,6 +20,7 @@
 		9E4E77461A7CC2A200AE9130 /* datePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E77451A7CC2A200AE9130 /* datePickerViewController.m */; };
 		9E4E77491A7CF00B00AE9130 /* commentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E77481A7CF00B00AE9130 /* commentViewController.m */; };
 		9E4E774C1A7D05D200AE9130 /* commentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E774B1A7D05D200AE9130 /* commentCollectionViewCell.m */; };
+		9EC8BD791A7D35A2006951D6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9EC8BD781A7D35A2006951D6 /* Info.plist */; };
 		9EFBD30E1A7BD85D00CF8D68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD30D1A7BD85D00CF8D68 /* main.m */; };
 		9EFBD3111A7BD85D00CF8D68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD3101A7BD85D00CF8D68 /* AppDelegate.m */; };
 		9EFBD3141A7BD85D00CF8D68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD3131A7BD85D00CF8D68 /* ViewController.m */; };
@@ -69,8 +70,9 @@
 		9E4E77481A7CF00B00AE9130 /* commentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentViewController.m; sourceTree = "<group>"; };
 		9E4E774A1A7D05D200AE9130 /* commentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentCollectionViewCell.h; sourceTree = "<group>"; };
 		9E4E774B1A7D05D200AE9130 /* commentCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentCollectionViewCell.m; sourceTree = "<group>"; };
+		9EC8BD781A7D35A2006951D6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9EC8BD7A1A7D35A6006951D6 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		9EFBD3081A7BD85D00CF8D68 /* iOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9EFBD30C1A7BD85D00CF8D68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EFBD30D1A7BD85D00CF8D68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9EFBD30F1A7BD85D00CF8D68 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9EFBD3101A7BD85D00CF8D68 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -85,7 +87,6 @@
 		9EFBD3321A7BEEEB00CF8D68 /* networkHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = networkHelper.m; sourceTree = "<group>"; };
 		9EFBD3341A7BEEFA00CF8D68 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		9EFBD3351A7BEEFA00CF8D68 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		9EFBD33A1A7BF20D00CF8D68 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = SOURCE_ROOT; };
 		9EFBD33E1A7C0F8500CF8D68 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9EFBD3401A7C100600CF8D68 /* MyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnnotation.h; sourceTree = "<group>"; };
 		9EFBD3411A7C100600CF8D68 /* MyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnnotation.m; sourceTree = "<group>"; };
@@ -189,9 +190,9 @@
 		9EFBD30B1A7BD85D00CF8D68 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9EFBD30C1A7BD85D00CF8D68 /* Info.plist */,
+				9EC8BD7A1A7D35A6006951D6 /* PrefixHeader.pch */,
+				9EC8BD781A7D35A2006951D6 /* Info.plist */,
 				9EFBD30D1A7BD85D00CF8D68 /* main.m */,
-				9EFBD33A1A7BF20D00CF8D68 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -343,6 +344,7 @@
 			files = (
 				9EFBD3171A7BD85D00CF8D68 /* Main.storyboard in Resources */,
 				9EFBD3191A7BD85D00CF8D68 /* Images.xcassets in Resources */,
+				9EC8BD791A7D35A2006951D6 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
