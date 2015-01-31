@@ -12,10 +12,9 @@ IB_DESIGNABLE
 @interface LOButton () {
 	IBInspectable CGFloat cornerRadius;
 	IBInspectable BOOL masksToBounds;
-    
-    IBInspectable CGFloat borderWidth;
-    IBInspectable UIColor *borderColor;
 
+	IBInspectable CGFloat borderWidth;
+	IBInspectable UIColor *borderColor;
 }
 
 @end
@@ -44,9 +43,9 @@ IB_DESIGNABLE
 	self.layer.cornerRadius = cornerRadius;
 	self.clipsToBounds = YES;
 	self.layer.masksToBounds = masksToBounds;
-    
-    self.layer.borderWidth = borderWidth;
-    self.layer.borderColor = borderColor.CGColor;
+
+	self.layer.borderWidth = borderWidth;
+	self.layer.borderColor = borderColor.CGColor;
 }
 
 - (void)prepareForInterfaceBuilder {

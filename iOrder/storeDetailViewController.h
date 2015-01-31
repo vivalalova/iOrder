@@ -10,5 +10,5 @@
 
 @interface storeDetailViewController : UIViewController
 
-@property (strong,nonatomic) PFObject* obj;
+@property (strong, nonatomic) PFObject *storeObj;
 @end

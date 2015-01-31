@@ -10,10 +10,10 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    NetworkingCRUDRead,
-    NetworkingCRUDCreate,
-    NetworkingCRUDUpdate,
-    NetworkingCRUDDelete
+	NetworkingCRUDRead,
+	NetworkingCRUDCreate,
+	NetworkingCRUDUpdate,
+	NetworkingCRUDDelete
 } NetworkingCRUD;
 
 

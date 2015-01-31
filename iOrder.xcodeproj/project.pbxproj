@@ -16,6 +16,7 @@
 		9E4E773C1A7C66A900AE9130 /* LOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E77351A7C66A900AE9130 /* LOImageView.m */; };
 		9E4E773D1A7C66A900AE9130 /* LOLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E77371A7C66A900AE9130 /* LOLabel.m */; };
 		9E4E77401A7C79E000AE9130 /* landingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E773F1A7C79E000AE9130 /* landingViewController.m */; };
+		9E4E77431A7CB50A00AE9130 /* navViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4E77421A7CB50A00AE9130 /* navViewController.m */; };
 		9EFBD30E1A7BD85D00CF8D68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD30D1A7BD85D00CF8D68 /* main.m */; };
 		9EFBD3111A7BD85D00CF8D68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD3101A7BD85D00CF8D68 /* AppDelegate.m */; };
 		9EFBD3141A7BD85D00CF8D68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD3131A7BD85D00CF8D68 /* ViewController.m */; };
@@ -27,7 +28,6 @@
 		9EFBD3361A7BEEFA00CF8D68 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD3351A7BEEFA00CF8D68 /* Reachability.m */; };
 		9EFBD33F1A7C0F8500CF8D68 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EFBD33E1A7C0F8500CF8D68 /* MapKit.framework */; };
 		9EFBD3421A7C100600CF8D68 /* MyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD3411A7C100600CF8D68 /* MyAnnotation.m */; };
-		9EFBD3451A7C244200CF8D68 /* network.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD3441A7C244200CF8D68 /* network.m */; };
 		9EFBD3471A7C297000CF8D68 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EFBD3461A7C297000CF8D68 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +59,8 @@
 		9E4E77371A7C66A900AE9130 /* LOLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LOLabel.m; sourceTree = "<group>"; };
 		9E4E773E1A7C79E000AE9130 /* landingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = landingViewController.h; sourceTree = "<group>"; };
 		9E4E773F1A7C79E000AE9130 /* landingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = landingViewController.m; sourceTree = "<group>"; };
+		9E4E77411A7CB50A00AE9130 /* navViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = navViewController.h; sourceTree = "<group>"; };
+		9E4E77421A7CB50A00AE9130 /* navViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = navViewController.m; sourceTree = "<group>"; };
 		9EFBD3081A7BD85D00CF8D68 /* iOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EFBD30C1A7BD85D00CF8D68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EFBD30D1A7BD85D00CF8D68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -80,8 +82,6 @@
 		9EFBD33E1A7C0F8500CF8D68 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9EFBD3401A7C100600CF8D68 /* MyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnnotation.h; sourceTree = "<group>"; };
 		9EFBD3411A7C100600CF8D68 /* MyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnnotation.m; sourceTree = "<group>"; };
-		9EFBD3431A7C244200CF8D68 /* network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = network.h; sourceTree = "<group>"; };
-		9EFBD3441A7C244200CF8D68 /* network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = network.m; sourceTree = "<group>"; };
 		9EFBD3461A7C297000CF8D68 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A34F67C24A5A07CEA4B68941 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78D9243DF89205C7198737E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -216,8 +216,6 @@
 				9EFBD3321A7BEEEB00CF8D68 /* networkHelper.m */,
 				9EFBD3341A7BEEFA00CF8D68 /* Reachability.h */,
 				9EFBD3351A7BEEFA00CF8D68 /* Reachability.m */,
-				9EFBD3431A7C244200CF8D68 /* network.h */,
-				9EFBD3441A7C244200CF8D68 /* network.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -225,6 +223,8 @@
 		9EFBD3381A7BEF2300CF8D68 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				9E4E77411A7CB50A00AE9130 /* navViewController.h */,
+				9E4E77421A7CB50A00AE9130 /* navViewController.m */,
 				9E4E773E1A7C79E000AE9130 /* landingViewController.h */,
 				9E4E773F1A7C79E000AE9130 /* landingViewController.m */,
 				9EFBD3121A7BD85D00CF8D68 /* ViewController.h */,
@@ -397,8 +397,8 @@
 			files = (
 				9E4E77381A7C66A900AE9130 /* LOUIKit.m in Sources */,
 				9EFBD3331A7BEEEB00CF8D68 /* networkHelper.m in Sources */,
+				9E4E77431A7CB50A00AE9130 /* navViewController.m in Sources */,
 				9EFBD3141A7BD85D00CF8D68 /* ViewController.m in Sources */,
-				9EFBD3451A7C244200CF8D68 /* network.m in Sources */,
 				9EFBD3421A7C100600CF8D68 /* MyAnnotation.m in Sources */,
 				9EFBD3111A7BD85D00CF8D68 /* AppDelegate.m in Sources */,
 				9E4E773C1A7C66A900AE9130 /* LOImageView.m in Sources */,

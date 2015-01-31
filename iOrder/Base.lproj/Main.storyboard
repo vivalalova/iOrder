@@ -22,19 +22,6 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="J5j-ML-chN"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLM-L7-qgb">
-                                <rect key="frame" x="260" y="504" width="44" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="3a7-no-bJC"/>
-                                    <constraint firstAttribute="height" constant="44" id="Nml-4n-SuA"/>
-                                </constraints>
-                                <state key="normal" image="define_location-50.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="locationToUser:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Zdp-Or-iED"/>
-                                </connections>
-                            </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0l-4I-EUv">
                                 <rect key="frame" x="139" y="263" width="42" height="21"/>
                                 <color key="backgroundColor" red="0.71684152272234736" green="0.71593198507096734" blue="0.73181934232026147" alpha="0.51000000000000001" colorSpace="calibratedRGB"/>
@@ -52,6 +39,26 @@
                                     <constraint firstAttribute="height" constant="25" id="Qoy-dr-54X"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLM-L7-qgb" customClass="LOButton">
+                                <rect key="frame" x="260" y="504" width="44" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="3a7-no-bJC"/>
+                                    <constraint firstAttribute="height" constant="44" id="Nml-4n-SuA"/>
+                                </constraints>
+                                <state key="normal" image="define_location-50.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="locationToUser:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Zdp-Or-iED"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -151,9 +158,12 @@
                                                         <state key="normal" title="撥打電話">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="telBtnPressed:" destination="xqf-1N-6yf" eventType="touchUpInside" id="pin-vt-nDT"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZ8-DZ-oOn" customClass="LOButton">
-                                                        <rect key="frame" x="0.0" y="152" width="151" height="44"/>
+                                                        <rect key="frame" x="-1" y="152" width="152" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="Rjr-gp-Fsz"/>
                                                         </constraints>
@@ -173,7 +183,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lt9-7K-bNW" customClass="LOButton">
-                                                        <rect key="frame" x="150" y="152" width="150" height="44"/>
+                                                        <rect key="frame" x="150" y="152" width="151" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="0uK-N3-O8J"/>
                                                         </constraints>
@@ -225,10 +235,10 @@
                                                     <constraint firstItem="ad0-dc-ENl" firstAttribute="leading" secondItem="0Jf-S8-go2" secondAttribute="trailing" constant="8" id="EJZ-Z6-jhN"/>
                                                     <constraint firstAttribute="bottom" secondItem="Lt9-7K-bNW" secondAttribute="bottom" constant="-1" id="GQp-Z0-M7e"/>
                                                     <constraint firstItem="M2s-hj-bv5" firstAttribute="top" secondItem="0Jf-S8-go2" secondAttribute="bottom" constant="8" id="K2W-KW-hc1"/>
-                                                    <constraint firstItem="yZ8-DZ-oOn" firstAttribute="leading" secondItem="XXm-Nq-v0s" secondAttribute="leading" id="LFX-fx-i6T"/>
+                                                    <constraint firstItem="yZ8-DZ-oOn" firstAttribute="leading" secondItem="XXm-Nq-v0s" secondAttribute="leading" constant="-1" id="LFX-fx-i6T"/>
                                                     <constraint firstItem="M2s-hj-bv5" firstAttribute="leading" secondItem="XXm-Nq-v0s" secondAttribute="leading" constant="80" id="MA5-05-i7F"/>
                                                     <constraint firstAttribute="bottom" secondItem="yZ8-DZ-oOn" secondAttribute="bottom" constant="-1" id="N5c-Fm-NbT"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Lt9-7K-bNW" secondAttribute="trailing" id="R1q-u8-zv4"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Lt9-7K-bNW" secondAttribute="trailing" constant="-1" id="R1q-u8-zv4"/>
                                                     <constraint firstItem="YKI-SH-AJO" firstAttribute="leading" secondItem="XXm-Nq-v0s" secondAttribute="leading" constant="12" id="Vqv-fh-Lxb"/>
                                                     <constraint firstItem="yZ8-DZ-oOn" firstAttribute="top" secondItem="M2s-hj-bv5" secondAttribute="bottom" constant="8" id="ZMz-HI-hlb"/>
                                                     <constraint firstItem="DbW-dH-a9V" firstAttribute="top" secondItem="XXm-Nq-v0s" secondAttribute="top" constant="8" id="cm8-93-kic"/>
@@ -257,11 +267,19 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E0u-Jk-Hut" customClass="LOView">
-                                        <rect key="frame" x="23" y="152" width="30" height="30"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="8" y="132" width="60" height="60"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wF-h5-68T">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="15"/>
+                                                <real key="value" value="30"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -277,7 +295,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Wsa-gZ-Yo5" secondAttribute="trailing" id="1G3-iW-VZA"/>
                             <constraint firstItem="Wsa-gZ-Yo5" firstAttribute="top" secondItem="3Bo-kT-mj9" secondAttribute="bottom" id="KpP-qF-nWa"/>
@@ -289,9 +307,13 @@
                     <navigationItem key="navigationItem" id="wNB-1E-Lkc"/>
                     <connections>
                         <outlet property="addressLabel" destination="0Jf-S8-go2" id="Ynh-Hp-mUb"/>
+                        <outlet property="downVoteBtn" destination="DbW-dH-a9V" id="qL0-Cu-HaB"/>
+                        <outlet property="fakeAlertView" destination="Z2o-TD-cI7" id="5Bl-rP-lex"/>
                         <outlet property="nameLabel" destination="YKI-SH-AJO" id="6PT-hL-if2"/>
                         <outlet property="streetImageView" destination="mIe-fS-SVU" id="7el-Pt-LxB"/>
+                        <outlet property="sumScoreLabel" destination="2wF-h5-68T" id="uJb-v7-tuy"/>
                         <outlet property="telBtn" destination="M2s-hj-bv5" id="5aW-GN-Myc"/>
+                        <outlet property="upVoteBtnn" destination="AkE-BK-SUa" id="LZK-Cu-fqF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X8q-2b-qhJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -458,10 +480,10 @@
             </objects>
             <point key="canvasLocation" x="-634" y="251"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav View Controller-->
         <scene sceneID="bCK-Xd-FU7">
             <objects>
-                <navigationController storyboardIdentifier="firstNav" automaticallyAdjustsScrollViewInsets="NO" id="fjJ-bK-JUP" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="firstNav" automaticallyAdjustsScrollViewInsets="NO" id="fjJ-bK-JUP" customClass="navViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vm4-9T-i0I">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
