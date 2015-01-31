@@ -13,8 +13,9 @@
 #import "datePickerViewController.h"
 #import <Social/Social.h>
 #import <MessageUI/MessageUI.h>
+#import "commentViewController.h"
 
-@interface storeDetailViewController ()<datePickerVCDelegate,MFMailComposeViewControllerDelegate> {
+@interface storeDetailViewController ()<datePickerVCDelegate,MFMailComposeViewControllerDelegate,commentViewControllerDelegate> {
 	IBOutlet UIImageView *streetImageView;
 	IBOutlet UILabel *nameLabel;
 	IBOutlet UILabel *addressLabel;
@@ -36,6 +37,12 @@
     
     SLComposeViewController *rexPost;
 
+    IBOutlet UIScrollView *scrollview;
+    
+    IBOutlet LOButton *UpNDownView;
+    IBOutlet NSLayoutConstraint *UpNDownConstant;
+    
+    UIImageView* animationImageView;
 }
 
 @end
@@ -108,7 +115,7 @@
 
 	[self telBtnCheck];
 
-	[storeDetailViewController setShadow:fakeAlertView withRange:CGSizeMake(1, 1)];
+	[storeDetailViewController setShadow:fakeAlertView withRange:CGSizeMake(2, 2)];
 }
 
 - (IBAction)back:(UIButton *)sender {
@@ -219,6 +226,54 @@
 	}];
 }
 
+#define kAlpha 0.8
+
+- (IBAction)redBtnPressed:(LOButton *)sender {
+    
+    CGRect frame = sender.frame;
+    frame.origin.y += 44;
+    animationImageView = [[UIImageView alloc]initWithFrame:frame];
+    animationImageView.image = [UIImage imageNamed:@"Oval 45"];
+    animationImageView.contentMode = UIViewContentModeScaleToFill;
+    
+    [self.navigationController.view addSubview:animationImageView];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        animationImageView.frame = CGRectMake(0, 0, 1500, 1500);
+        animationImageView.center = sender.center;
+        animationImageView.alpha = kAlpha;
+    } completion:^(BOOL finished) {
+        
+        [self.view layoutIfNeeded];
+        
+        commentViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"commentViewController"];
+        controller.storeObj = self.storeObj;
+        controller.delegate = self;
+        
+        [self.navigationController pushViewController:controller animated:NO];
+        animationImageView.alpha = 1;
+        animationImageView.hidden = YES;
+    }];
+}
+
+-(void)commentViewControllerDidDissmiss:(commentViewController *)controller{
+    animationImageView.hidden = NO;
+    
+    CGRect frame = UpNDownView.frame;
+    frame.origin.y += 44;
+    
+    animationImageView.alpha = kAlpha;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        animationImageView.frame = frame;
+        animationImageView.alpha = 1;
+    } completion:^(BOOL finished) {
+        [animationImageView removeFromSuperview];
+        animationImageView = nil;
+    }];
+}
+
+
 #pragma mark - shadow
 + (void)setShadow:(id)sender withRange:(CGSize)size {
 	UIView *view = (UIView *)sender;
@@ -264,8 +319,6 @@
         blackView.hidden = YES;
         
        //寄信
-        
-        
         [self contactFriendWithEmail:dateString];
     }];
 }
