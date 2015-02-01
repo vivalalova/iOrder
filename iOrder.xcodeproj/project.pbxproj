@@ -23,6 +23,7 @@
 		9EC8BD791A7D35A2006951D6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9EC8BD781A7D35A2006951D6 /* Info.plist */; };
 		9EC8BD7D1A7DA34A006951D6 /* bill-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EC8BD7C1A7DA34A006951D6 /* bill-50.png */; };
 		9EC8BD801A7DA4E5006951D6 /* orderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC8BD7F1A7DA4E5006951D6 /* orderListViewController.m */; };
+		9EC8BD831A7DBBDE006951D6 /* orderDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC8BD821A7DBBDE006951D6 /* orderDetailTableViewController.m */; };
 		9EFBD30E1A7BD85D00CF8D68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD30D1A7BD85D00CF8D68 /* main.m */; };
 		9EFBD3111A7BD85D00CF8D68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD3101A7BD85D00CF8D68 /* AppDelegate.m */; };
 		9EFBD3141A7BD85D00CF8D68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFBD3131A7BD85D00CF8D68 /* ViewController.m */; };
@@ -77,6 +78,8 @@
 		9EC8BD7C1A7DA34A006951D6 /* bill-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bill-50.png"; sourceTree = "<group>"; };
 		9EC8BD7E1A7DA4E5006951D6 /* orderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = orderListViewController.h; sourceTree = "<group>"; };
 		9EC8BD7F1A7DA4E5006951D6 /* orderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = orderListViewController.m; sourceTree = "<group>"; };
+		9EC8BD811A7DBBDE006951D6 /* orderDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = orderDetailTableViewController.h; sourceTree = "<group>"; };
+		9EC8BD821A7DBBDE006951D6 /* orderDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = orderDetailTableViewController.m; sourceTree = "<group>"; };
 		9EFBD3081A7BD85D00CF8D68 /* iOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EFBD30D1A7BD85D00CF8D68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9EFBD30F1A7BD85D00CF8D68 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -250,6 +253,8 @@
 				9E4E77481A7CF00B00AE9130 /* commentViewController.m */,
 				9EC8BD7E1A7DA4E5006951D6 /* orderListViewController.h */,
 				9EC8BD7F1A7DA4E5006951D6 /* orderListViewController.m */,
+				9EC8BD811A7DBBDE006951D6 /* orderDetailTableViewController.h */,
+				9EC8BD821A7DBBDE006951D6 /* orderDetailTableViewController.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 			files = (
 				9E4E77461A7CC2A200AE9130 /* datePickerViewController.m in Sources */,
 				9E4E77381A7C66A900AE9130 /* LOUIKit.m in Sources */,
+				9EC8BD831A7DBBDE006951D6 /* orderDetailTableViewController.m in Sources */,
 				9EFBD3331A7BEEEB00CF8D68 /* networkHelper.m in Sources */,
 				9E4E77491A7CF00B00AE9130 /* commentViewController.m in Sources */,
 				9E4E77431A7CB50A00AE9130 /* navViewController.m in Sources */,

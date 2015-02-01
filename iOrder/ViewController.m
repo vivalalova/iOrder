@@ -15,6 +15,10 @@
 #import <UIAlertController+Blocks.h>
 #import <UIAlertView+Blocks.h>
 #import <MapKit/MapKit.h>
+
+#import "orderListViewController.h"
+
+
 @interface ViewController () <MKMapViewDelegate, CLLocationManagerDelegate, UIScrollViewDelegate> {
 	IBOutlet MKMapView *map;
 
@@ -163,8 +167,10 @@
 		}];
 	}
 	else {//看訂單
-        
-        
+        NSLog(@"= = ");
+        [self performSegueWithIdentifier:@"goList" sender:nil];
+//        orderListViewController* controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"orderListViewController"];
+//        [self.navigationController pushViewController:controller animated:YES];
 	}
 }
 

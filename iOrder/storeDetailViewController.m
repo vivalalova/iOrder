@@ -133,8 +133,9 @@
 
 - (IBAction)orderBtnPressed:(LOButton *)sender {
     
-    PFObject* order = [[PFObject alloc]initWithClassName:@"orderMain"];
+    PFObject* order = [[PFObject alloc]initWithClassName:@"OrderMain"];
     order[@"user"] = [PFUser currentUser];
+    order[@"store"] = self.storeObj;
     
     [order saveEventually:^(BOOL succeeded, NSError *error) {
         order[@"orderID"] = order.objectId;
@@ -260,9 +261,11 @@
 	telString = [telString stringByReplacingOccurrencesOfString:@"-" withString:@""];
 
 	[RMUniversalAlert showAlertInViewController:self withTitle:@"準備撥出電話" message:[NSString stringWithFormat:@"%@", telString] cancelButtonTitle:@"取消" destructiveButtonTitle:@"撥打" otherButtonTitles:nil tapBlock: ^(RMUniversalAlert *alert, NSInteger buttonIndex) {
-	    NSURL *phoneUrl = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@", telString]];
+        if (buttonIndex) {
+            NSURL *phoneUrl = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@", telString]];
 
-	    [[UIApplication sharedApplication] openURL:phoneUrl];
+            [[UIApplication sharedApplication] openURL:phoneUrl];
+        }
 	}];
 }
 

@@ -94,7 +94,7 @@
                         <outlet property="map" destination="tVC-lY-Zpt" id="Ehn-J1-9AH"/>
                         <outlet property="okBtn" destination="q02-c7-K6r" id="SLB-ff-eee"/>
                         <segue destination="xqf-1N-6yf" kind="push" id="ksu-vP-EPy"/>
-                        <segue destination="81l-9e-jTm" kind="push" id="SCB-Bh-Vbu"/>
+                        <segue destination="81l-9e-jTm" kind="push" identifier="goList" id="SCB-Bh-Vbu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -526,7 +526,7 @@
         <!--我的訂單-->
         <scene sceneID="SJg-Vc-ib6">
             <objects>
-                <viewController id="81l-9e-jTm" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="orderListViewController" id="81l-9e-jTm" customClass="orderListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3Qn-oF-l36"/>
                         <viewControllerLayoutGuide type="bottom" id="lmz-pE-pUy"/>
@@ -539,14 +539,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ox3-3p-Dx5">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="p6X-4h-3Ba" style="IBUITableViewCellStyleDefault" id="ox3-3p-Dx5">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ox3-3p-Dx5" id="klC-ad-atd">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p6X-4h-3Ba">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="81l-9e-jTm" id="2pS-5D-NbI"/>
+                                    <outlet property="delegate" destination="81l-9e-jTm" id="z3B-at-jIV"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -558,10 +570,61 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="我的訂單" id="Tna-n2-7LJ"/>
+                    <connections>
+                        <outlet property="tableview" destination="Fpn-dd-LkR" id="7bN-UY-txo"/>
+                        <segue destination="gTJ-vr-hF6" kind="push" id="Yop-PM-ORO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Hy-Ia-ob5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="675.73333333333335" y="-367.30666666666667"/>
+            <point key="canvasLocation" x="1091" y="-376"/>
+        </scene>
+        <!--訂單明細-->
+        <scene sceneID="bjp-Pt-k6i">
+            <objects>
+                <tableViewController storyboardIdentifier="orderDetailTableViewController" id="gTJ-vr-hF6" customClass="orderDetailTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Q3B-Oq-BcX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="zVN-va-ieC" detailTextLabel="sbh-NO-wTq" style="IBUITableViewCellStyleValue1" id="ViC-z7-kCH">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ViC-z7-kCH" id="Gmo-j4-cWd">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zVN-va-ieC">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sbh-NO-wTq">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gTJ-vr-hF6" id="L68-wr-QEe"/>
+                            <outlet property="delegate" destination="gTJ-vr-hF6" id="Ut8-Lf-kpH"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="訂單明細" id="fzw-fK-Atm">
+                        <barButtonItem key="rightBarButtonItem" systemItem="reply" id="bg4-cF-4hR">
+                            <connections>
+                                <action selector="phonecallBtnPressed:" destination="gTJ-vr-hF6" id="UzO-fE-vum"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NEa-ff-mmR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1469" y="-376"/>
         </scene>
         <!--Landing View Controller-->
         <scene sceneID="EZE-Zr-yRg">
