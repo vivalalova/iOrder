@@ -20,7 +20,7 @@ pod install
 
 ####使用Parse.com的服務做為後端的選擇####
 
-####後端裡的資料從http://www.shopcool.com.tw爬來的####
+####後端裡的資料從 http://www.shopcool.com.tw 爬來的####
 
 
 
