@@ -1,29 +1,29 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+-————
 
-### What is this repository for? ###
+###使用###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+iOrder使用 cocoapods 做第三方套件管理
 
-### How do I get set up? ###
+如不能執行
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+```
+pod install
+````
 
-### Contribution guidelines ###
+###針對iOS8以上編寫###
 
-* Writing tests
-* Code review
-* Other guidelines
+###使用 xcode 6支援的live render ###
+可以看到部分屬性在storyboard上調整
 
-### Who do I talk to? ###
+###使用Parse.com的服務做為後端的選擇###
 
-* Repo owner or admin
-* Other community or team contact
+###後端裡的資料從http://www.shopcool.com.tw爬來的###
+
+
+
+
+
+
+

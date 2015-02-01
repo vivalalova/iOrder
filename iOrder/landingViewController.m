@@ -65,6 +65,8 @@
 	}
 }
 
+
+
 - (IBAction)fbLogin:(id)sender {
 	// Set permissions required from the facebook user account
 	NSArray *permissionsArray = @[@"public_profile", @"user_friends", @"email"];
@@ -73,6 +75,19 @@
 
 	// Login PFUser using Facebook
 	[PFFacebookUtils logInWithPermissions:permissionsArray block: ^(PFUser *user, NSError *error) {
+	    if (user) {
+	        [FBRequestConnection startForMeWithCompletionHandler: ^(FBRequestConnection *connection, id result, NSError *error) {
+	            user[@"fbId"] = [result objectForKey:@"id"];
+                user[@"gender"] = result[@"gender"];
+                user[@"name"] = result[@"name"];
+                user[@"link"] = result[@"link"];
+                
+                
+                
+                [user saveInBackground];
+			}];
+		}
+
 	    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 
 	    if (!user) {

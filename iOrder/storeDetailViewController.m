@@ -8,7 +8,6 @@
 
 #import "storeDetailViewController.h"
 #import <Parse/Parse.h>
-#import <SDWebImage/UIImageView+WebCache.h>
 #import <MapKit/MapKit.h>
 #import "datePickerViewController.h"
 #import <Social/Social.h>
@@ -125,12 +124,52 @@
 
 - (IBAction)routeBtnPressed:(UIButton *)sender {
 	[RMUniversalAlert showAlertInViewController:self withTitle:@"導航" message:@"離開本應用去導航嗎" cancelButtonTitle:@"取消" destructiveButtonTitle:@"就去吧" otherButtonTitles:nil tapBlock: ^(RMUniversalAlert *alert, NSInteger buttonIndex) {
-	    NSString *stringURLScheme = [NSString stringWithFormat:@"http://maps.google.com/maps?q=%@", addressLabel.text];
-	    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[stringURLScheme stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+	    if (buttonIndex) {
+	        NSString *stringURLScheme = [NSString stringWithFormat:@"http://maps.google.com/maps?q=%@", addressLabel.text];
+	        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[stringURLScheme stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+		}
 	}];
 }
 
 - (IBAction)orderBtnPressed:(LOButton *)sender {
+    
+    PFObject* order = [[PFObject alloc]initWithClassName:@"orderMain"];
+    order[@"user"] = [PFUser currentUser];
+    
+    [order saveEventually:^(BOOL succeeded, NSError *error) {
+        order[@"orderID"] = order.objectId;
+        NSString* url = [NSString stringWithFormat:@"http://karolass.github.io/HTML/Order.html?=%@",order.objectId];
+        [self mailOrderWithURL:url];
+        
+        [order saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            
+        }];
+    }];
+}
+//寄order叫人填
+-(void)mailOrderWithURL:(NSString*)url{
+        MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
+        controller.mailComposeDelegate = self;
+        
+        //設定收件人與主旨等資訊
+        [controller setToRecipients:nil];
+        [controller setCcRecipients:nil];
+        //[controller setBccRecipients:[NSArray arrayWithObjects:@"我不能說", nil]];
+        [controller setSubject:[NSString stringWithFormat:@"我開啟了一份%@訂購單", self.storeObj[@"name"]]];
+    
+        //設定內文並且不使用HTML語法
+        [controller setMessageBody:[NSString stringWithFormat:@"這個連結你可以去填你要的: %@",url]
+                            isHTML:NO];
+    
+        //TODO:圖片
+        
+        controller.navigationBar.tintColor = [UIColor whiteColor];
+        
+        //顯示電子郵件畫面
+        [self presentViewController:controller animated:YES completion: ^{
+        }];
+    
+
 }
 
 - (IBAction)groupBtnPressed:(LOButton *)sender {

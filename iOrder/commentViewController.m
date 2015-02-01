@@ -8,6 +8,7 @@
 
 #import "commentViewController.h"
 #import "commentCollectionViewCell.h"
+
 @interface commentViewController () <UICollectionViewDataSource, UICollectionViewDelegate> {
 	IBOutlet UICollectionView *collectionview;
 	IBOutlet UITextField *textField;
@@ -72,17 +73,19 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 	commentCollectionViewCell *cell = [collectionview dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
 
-	NSLog(@"%d", comments.count);
-
 	if (comments.count) {
 		PFObject *comment = comments[indexPath.row];
-		cell.userImageView.image = nil;
+		PFUser *user = comment[@"user"];
+
+        
+		cell.profileView.profileID = user[@"fbId"];
+        cell.nameLabel.text = user[@"name"];
 		cell.userCommentLabel.text = comment[@"comment"];
 
 		return cell;
 	}
 	else {
-		cell.userImageView.image = nil;
+		cell.profileView.profileID = nil;
 		cell.userCommentLabel.text = @"尚未有人發表評論";
 
 		return cell;

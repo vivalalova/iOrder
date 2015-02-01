@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface commentCollectionViewCell : UICollectionViewCell
-@property (strong, nonatomic) IBOutlet UIImageView *userImageView;
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) IBOutlet FBProfilePictureView *profileView;
 @property (strong, nonatomic) IBOutlet UILabel *userCommentLabel;
 
 @end
